@@ -1,4 +1,5 @@
 import React from 'react'
+import './App.css'
 import './index.css'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
@@ -18,11 +19,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
        <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/home" element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="services" element={<Services />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
         </Route>
       </Routes>
     </BrowserRouter>
