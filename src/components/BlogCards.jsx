@@ -1,0 +1,39 @@
+import React from "react";
+import { FaUser } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
+export default function BlogCards({
+  blogs,
+  currentPage,
+  selectedCategory,
+  pageSize,
+}) {
+
+  
+  // Assurez-vous que blogs.default est un tableau
+  const filteredBlogs = Array.isArray(blogs?.default) ? blogs.default : [];
+  const updatedBlogs = filteredBlogs
+
+    .filter((blogs) => !selectedCategory || blogs.category === selectedCategory)
+    .slice((currentPage - 1) * pageSize, currentPage * pageSize);
+    console.log(updatedBlogs);
+  return (
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
+      {updatedBlogs.map((blog) => (
+        <Link key={blog.id}>
+          <div>
+            <img src={blog.image} alt="" className="w-full" />
+          </div>
+          <h3 className="mt-4 mb-2 font-bold hover:text-blue-600 cursor-pointer">
+            {blog.title}
+          </h3>
+          <p className="mb-2 text-gray-600">
+            <FaUser className="inline-flex items-center mr-2" />
+            {blog.author}
+          </p>
+          <p className="text-sm text-gray-500">Published:{blog.author}</p>
+        </Link>
+      ))}
+    </div>
+  );
+}
