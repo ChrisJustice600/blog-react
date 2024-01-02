@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import BlogCards from "./BlogCards";
 import Pagination from "./Pagination";
 import CategorSelection from "./CategorSelection";
+import SideBar from "./SideBar";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 12; // blogs par page
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [activeCategory, setActiveCategory] = useState(null)
+  const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
     async function fetchBlogs() {
@@ -49,13 +50,18 @@ export default function BlogPage() {
       </div>
 
       {/* BlogCard section */}
-      <div>
+      <div className="flex flex-col lg:flex-row gap-12">
+        {/* BlogCard component */}
         <BlogCards
           blogs={blogs}
           currentPage={currentPage}
           selectedCategory={selectedCategory}
           pageSize={pageSize}
         />
+        {/* SideBar component */}
+        <div>
+          <SideBar />
+        </div>
       </div>
 
       {/* pagination section */}
