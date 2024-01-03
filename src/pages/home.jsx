@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Banner />
 
-      <div>
+      <div className=" max-w-7xl mx-auto">
         <BlogPage />
       </div>
     </>

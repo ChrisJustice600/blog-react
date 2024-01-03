@@ -1,31 +1,30 @@
-import React from 'react'
-import './App.css'
-import './index.css'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import Home from './pages/home.jsx'
-import Blogs from './pages/blogs.jsx'
-import Contact from './pages/contact.jsx'
-import About from './pages/About.jsx'
-import Services from './pages/services.jsx'
-import {
- BrowserRouter, Routes, Route
-} from "react-router-dom";
+import React from "react";
+import "./App.css";
+import "./index.css";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import Home from "./pages/home.jsx";
+import Blogs from "./pages/blogs.jsx";
+import Contact from "./pages/contact.jsx";
+import About from "./pages/About.jsx";
+import Services from "./pages/services.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SinglePost from "./pages/SinglePost.jsx";
 
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-       <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<Blogs />}>
+            <Route path="/blogs/:id" element={<SinglePost />} />
+          </Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
